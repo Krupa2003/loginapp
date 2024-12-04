@@ -1,0 +1,105 @@
+/* General Body Styling */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* Home Page Background */
+.home-bg {
+    background-color: #f4f4f9;
+    background-image: linear-gradient(120deg, #f0f4f8, #dbe6f0);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Login Page Background */
+.login-bg {
+    background-color: #f7f7f7;
+    background-image: linear-gradient(120deg, #d0e7ff, #c7d7eb);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Register Page Background */
+.register-bg {
+    background-color: #f0f0f0;
+    background-image: linear-gradient(120deg, #e1f3f1, #f1e4f1);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Heading Styling */
+h1, h2 {
+    color: #4CAF50;
+}
+
+/* Links Styling */
+a {
+    text-decoration: none;
+    color: blue;
+}
+
+/* Button Styling */
+button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Form Styling */
+form {
+    max-width: 400px;
+    margin: auto;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+/* Pop-Up Message Styling */
+.popup-message {
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #4CAF50;
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    font-size: 16px;
+    display: none;
+    z-index: 1000;
+}
+
+.popup-message.error {
+    background-color: #f44336;
+}
+
+/* Loading Spinner Styling */
+#loading-message {
+    color: #4CAF50;
+}

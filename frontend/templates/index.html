@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="home-bg">
+    <h1>Welcome, {{ username if username else "Sigmoidians" }}</h1>
+    {% if not username %}
+    <a href="/login">Login</a> | <a href="/register">Register</a>
+    {% else %}
+    <a href="/logout">Logout</a>
+    {% endif %}
+
+    <h2>Users List</h2>
+
+    <!-- Button to load users -->
+    <button id="load-users-btn">Load Users</button>
+
+    <!-- Loading message -->
+    <div id="loading-message" style="display: none;">Loading...</div>
+
+    <!-- Users list will be displayed here -->
+    <div id="users-list" style="margin-top: 20px;"></div>
+
+    <script>
+        // JavaScript to fetch users on button click
+        document.getElementById('load-users-btn').addEventListener('click', fetchUsers);
+
+        async function fetchUsers() {
+            document.getElementById('loading-message').style.display = 'block';
+
+            try {
+                const response = await fetch('/users-data');
+                const data = await response.json();
+                const usersListDiv = document.getElementById('users-list');
+                usersListDiv.innerHTML = ''; // Clear any previous data
+
+                document.getElementById('loading-message').style.display = 'none';
+
+                if (Array.isArray(data)) {
+                    data.forEach(user => {
+                        const userDiv = document.createElement('div');
+                        userDiv.textContent = `Username: ${user.username}, ID: ${user.id}`;
+                        usersListDiv.appendChild(userDiv);
+                    });
+                } else {
+                    usersListDiv.textContent = 'No users found';
+                }
+            } catch (error) {
+                console.error('Error fetching users:', error);
+                document.getElementById('loading-message').style.display = 'none';
+            }
+        }
+    </script>
+
+</body>
+</html>

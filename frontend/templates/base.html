@@ -1,0 +1,21 @@
+<!-- base.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Home{% endblock %}</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <h1>Welcome, {{ username if username else "Sigmoidians" }}</h1>
+    {% if not username %}
+    <a href="/login">Login</a> | <a href="/register">Register</a>
+    {% else %}
+    <a href="/logout">Logout</a>
+    {% endif %}
+
+    <!-- This is where the page content will go -->
+    {% block content %}{% endblock %}
+</body>
+</html>

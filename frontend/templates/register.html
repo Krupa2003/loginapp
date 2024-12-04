@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="register-bg">
+    <h1>Register</h1>
+    <form action="/register" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+        
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <button type="submit">Register</button>
+    </form>
+
+    <!-- Pop-up for success message -->
+    <div id="popup-message" class="popup-message" style="display: none;">
+        Registration Successful! Please <a href="/login">Login</a>.
+    </div>
+
+    <script>
+        // Show pop-up after successful registration
+        {% if username %}
+            document.getElementById('popup-message').style.display = 'block';
+            setTimeout(() => document.getElementById('popup-message').style.display = 'none', 3000);
+        {% endif %}
+    </script>
+</body>
+</html>

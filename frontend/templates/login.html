@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body class="login-bg">
+    <h1>Login</h1>
+    <form action="/login" method="post">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required><br><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required><br><br>
+        
+        <button type="submit">Login</button>
+    </form>
+
+    <!-- Forgot Password Link -->
+    <p><a href="/forgot-password">Forgot Password?</a></p>
+    
+    <!-- Pop-up for success message -->
+    <div id="popup-message" class="popup-message" style="display: none;">
+        Login Successful! Welcome, <span id="welcome-username"></span>
+    </div>
+
+    <script>
+        // Show pop-up after successful login
+        {% if username %}
+            document.getElementById('welcome-username').innerText = '{{ username }}';
+            document.getElementById('popup-message').style.display = 'block';
+            setTimeout(() => document.getElementById('popup-message').style.display = 'none', 3000);
+        {% endif %}
+    </script>
+</body>
+</html>
