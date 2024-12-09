@@ -1,20 +1,21 @@
-# Use the official Python base image
-FROM python:3.11-slim
+# Use the official FastAPI image as the base
+FROM tiangolo/uvicorn-gunicorn-fastapi:python3.9
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy the requirements.txt to the working directory
-COPY requirements.txt .
+# Install dependencies
+COPY backend/requirements.txt /app/requirements.txt
+RUN pip install --no-cache-dir -r /app/requirements.txt
+COPY backend /app/backend
 
-# Install the dependencies from the requirements.txt
-RUN pip install --no-cache-dir -r requirements.txt
+# Copy the application code into the container
+COPY frontend/templates /app/frontend/templates
+COPY frontend/static /app/frontend/static
 
-# Copy the entire backend folder to the working directory inside the container
-COPY ./backend ./backend
-
-# Expose port 8000 for FastAPI to listen on
+# Expose the FastAPI port
 EXPOSE 8000
 
-# Define the command to run the FastAPI app using Uvicorn
-CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+# Command to run the FastAPI app
+CMD ["uvicorn", "backend.main:app", "--host", "0.0.0.0", "--port", "8000"]
+    

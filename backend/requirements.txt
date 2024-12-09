@@ -1,0 +1,8 @@
+fastapi==0.95.2
+uvicorn==0.23.1
+sqlalchemy
+passlib[bcrypt]
+prometheus-fastapi-instrumentator
+prometheus-client
+pydantic
+mysql-connector-python
